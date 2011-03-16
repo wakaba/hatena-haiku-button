@@ -1,0 +1,78 @@
+はてなハイクボタン
+~~~~~~~~~~~~~~~~~~
+
+Web ページ上にはてなハイク投稿用のボタンを簡単に配置するための
+JavaScript コードです。非公式です。
+
+はてなハイク投稿フォームフィルイン仕様
+<http://developer.hatena.ne.jp/ja/documents/haiku/misc/forms> で提供
+されているボタン用画像を押すと、はてなハイクのブログパーツが開きます。
+はてなにログインしていれば、その場で投稿もできます。
+
+* 使い方
+
+まずは、 Hatena Developer Center のドキュメント
+
+    はてなハイク投稿フォームフィルイン仕様
+    <http://developer.hatena.ne.jp/ja/documents/haiku/misc/forms>
+
+を参考にボタンを用意します。例えば
+
+    <a href="http://h.hatena.ne.jp/keyword/Test">
+      <img src="http://h.hatena.ne.jp/images/haiku-button.png"
+          alt="Haiku!" title="はてなハイクに投稿">
+    </a>
+
+のようにすると、「Test」キーワードへのリンクになります。この img 要素
+に、いくつか属性を書き足します。
+
+    <a href="http://h.hatena.ne.jp/keyword/Test">
+      <img src="http://h.hatena.ne.jp/images/haiku-button.png"
+          alt="Haiku!" title="はてなハイクに投稿"
+          class="hatena-haiku-button"
+          data-haiku-word="Test"
+          data-haiku-width=500
+          data-haiku-height=300>
+    </a>
+
+class=hatena-haiku-button
+
+    このクラス名を使ってボタンを探すので、必ず指定してください。
+    もちろん、同じ class 属性でこれ以外のクラスが指定されていても
+    構いません。
+
+data-haiku-word
+
+    表示するキーワードを指定してください。 asin:... や http:...
+    も書けます。省略すると、その (ボタンが貼られた) ページの URL
+    になります。
+
+data-haiku-width, data-haiku-height
+
+    ボタンを押したときに表示する幅と高さを指定してください。
+    省略すると適当に決めます。
+
+このボタンはページ中に何個あっても構いません。ページの最後の方 (最後の
+ボタンよりも後) に
+
+    <script src="https://github.com/wakaba/hatena-haiku-button/raw/master/scripts/hatena-haiku-button.js" charset=utf-8 defer async></script>
+
+と script 要素を書き足してください。
+
+以上でボタンが動くようになるはずです。
+
+* もう一歩
+
+initHatenaHaikuButton という関数が定義されるので、引数として要素を渡す
+ことで、その要素をボタンにできます。 XHR で動的に読み込んだ部分の要素
+をボタン化するのにお使いください。
+
+* 例
+
+どんな感じか見てみたいという方のためにブックマークレットを用意しました。
+bookmarklets/bookmark-entries.js (同じものが Hatena::Let
+<http://let.hatelabo.jp/wakabatan/let/gYC-x9fn24bNYA> にもあります。)
+
+このブックマークレットを実行すると、はてなブックマーク 
+<http://b.hatena.ne.jp/> のエントリーページへのリンク (users 画像など) 
+の横にはてなハイクボタンが追加されます。

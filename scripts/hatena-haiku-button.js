@@ -37,7 +37,7 @@ function initHatenaHaikuButton (haikuButton) {
     var word = button.getAttribute('data-haiku-word') || location.href;
 
     var id = ('haiku-widget-' + Math.random()).replace(/\./, '');
-    var url = 'http://h.hatena.ne.jp/widget?word=' + encodeURIComponent(word) + '&id=' + id + '&height=' + widgetHeight + '&width=' + widgetWidth + '&scrolling=auto&scrolltop=body';
+    var url = 'http://h.hatena.ne.jp/widget?word=' + encodeURIComponent(word) + '&id=' + id + '&height=' + widgetHeight + '&width=' + widgetWidth + '&scrolling=auto';
 
     var article = document.createElement('div');
     article.className = 'haiku-button-container';

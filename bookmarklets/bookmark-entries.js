@@ -26,7 +26,7 @@ javascript:
 
 /*
 
-Open <http://b.hatena.ne.jp/> and execute this bookmarklet.
+Usage: Open <http://b.hatena.ne.jp/> and execute this bookmarklet.
 
 ************ LICENSE ************
 
